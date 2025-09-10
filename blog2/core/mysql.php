@@ -19,7 +19,7 @@
         mysqli_stmt_execute($stmt);
 
         $retorno = (boolean) mysqli_stmt_affected_rows($stmt);
-        $_SESSION['errors'] = mysqli_stmt_errors_list($stmt);
+        $_SESSION['errors'] = mysqli_stmt_error_list($stmt);
 
         mysqli_stmt_close($stmt);
          desconecta($conexao);
@@ -42,7 +42,7 @@
        {
             $dado = $expressao[count($expressao) - 1];
 
-            $tipo[] = getype($dado)[0];
+            $tipo[] = gettype($dado)[0];
             $expressao[count($expressao)-1] = '?';
             $coringa_criterio[] = $expressao;
 
@@ -61,7 +61,7 @@
        $conexao = conecta();
        $stmt = mysqli_prepare($conexao, $instrucao);
 
-       if(iseet($tipo))
+       if(isset($tipo))
        {
             $comando = 'mysqli_stmt_bind_param($stmt,';
             $comando .= "'". implode('', $tipo). "'";
@@ -74,7 +74,7 @@
        mysqli_stmt_execute($stmt);
        $retorno = (boolean) mysqli_stmt_affected_rows($stmt);
 
-       $_SESSION['errors'] = myseli_stmt_error_list($stmt);
+       $_SESSION['errors'] = mysqli_stmt_error_list($stmt);
 
        mysqli_stmt_close($stmt);
 
@@ -131,13 +131,13 @@ function buscar(string $entidade, array $campos = ['*'], array $criterio = [], s
     {
         $dado = $expressao[count($expressao)-1];
 
-        $tipo[] = getype($dado)[0];
+        $tipo[] = gettype($dado)[0];
        $expressao[count($expressao)-1] = '?';
        $coringa_criterio[] = $expressao;
 
        $nome_campo = (count($expressao) < 4 ) ? $expressao[0] : $expressao[1];
 
-       if(iseet($$nome_campo))
+       if(isset($$nome_campo))
        {
             $nome_campo = $nome_campo . '_'. rand();
        }
@@ -150,12 +150,12 @@ function buscar(string $entidade, array $campos = ['*'], array $criterio = [], s
 
     $stmt= mysqli_prepare($conexao, $instrucao);
 
-    if(iseet($tipo))
+    if(isset($tipo))
     {
         $comando = 'mysqli_stmt_bind_param($stmt, ';
-        $comando .= "'".implode ('', $tipo). "'";
-        $comando .= ', $'.implode(', $', $campos_criterio);
-        $comando .= ');';
+        $comando .= "'" . implode ('', $tipo). "'";
+        $comando .= ', $' . implode(', $', $campos_criterio);
+        $comando .= ') ; ';
 
         eval ($comando);
 
@@ -179,23 +179,3 @@ function buscar(string $entidade, array $campos = ['*'], array $criterio = [], s
 }
 ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-?>

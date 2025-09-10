@@ -52,7 +52,7 @@
 
         function select (string $entidade, array $campos, array $criterio = [], string $ordem = null): string
         {
-            $instrucao = "SELECT" . implode(', ', $campos);
+            $instrucao = "SELECT " . implode(', ', $campos);
             $instrucao .= " FROM {$entidade}";
             if(!empty ($criterio))
                 {
