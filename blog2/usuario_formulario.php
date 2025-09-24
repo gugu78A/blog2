@@ -2,7 +2,7 @@
 <html>
     <head>
          <title>USUARIO |  Projeto para Web com PHP</title>
-         <link rel = "stylesheet" href = "lob/bootstrap-4.2.1-dist/css/bootstrap.min.css">
+         <link rel = "stylesheet" href = "lib/bootstrap-4.2.1-dist/css/bootstrap.min.css">
     </head>
 <body>
     <div class= "container">

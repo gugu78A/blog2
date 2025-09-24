@@ -2,7 +2,7 @@
     require_once 'includes/funcoes.php';
     require_once 'core/conexao_mysql.php';
     require_once 'core/sql.php';
-    require_once 'core;mysql.php';
+    require_once 'core/mysql.php';
 
     foreach($_GET as $indice => $dado)
     {
@@ -17,7 +17,7 @@
                 'texto',
                 '(select nome
                 from usuario
-                where usuario.id - post.usuario_id) as nome'
+                where usuario.id = post.usuario_id) as nome'
       ],
       [
                 ['id', '=', $post]
