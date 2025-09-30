@@ -10,7 +10,7 @@
 
         if(!$conexao)
         {
-            echo 'Erro: Nao foi possivel conectar ao MySql.'. PHO_EOL;
+            echo 'Erro: Nao foi possivel conectar ao MySql.'. PHP_EOL;
             echo 'Debugging errno: '. mysqli_connect_errno(). PHP_EOL;
             echo 'Debugging error: '. mysqli_connect_error(). PHP_EOL;
             return null;
@@ -23,5 +23,6 @@
     {
         mysqli_close($conexao);
     }
+
 
 ?>
