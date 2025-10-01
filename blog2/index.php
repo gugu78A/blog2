@@ -54,11 +54,12 @@
                         'texto',
                         'like',
                         "%{$busca}%"
+                        
                     ];
                 }
 
                 $posts = buscar(
-                    'post',
+                   'post',
                     [
                         'titulo',
                         'data_postagem',
